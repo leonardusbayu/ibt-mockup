@@ -1,0 +1,59 @@
+{
+  "name": "ibt-preparation-test",
+  "version": "1.0.0",
+  "description": "TOEFL iBT practice test platform with admin interface using Netlify Functions and Neon Postgres",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "netlify dev --port 8888",
+    "serve-functions": "netlify dev --functions functions",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "lint": "eslint 'src/**/*.{js,jsx}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/username/ibt-preparation-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/ibt-preparation-test/issues"
+  },
+  "homepage": "https://ibt-preparation-test.netlify.app",
+  "keywords": [
+    "toefl",
+    "ibt",
+    "practice",
+    "react",
+    "netlify",
+    "postgres",
+    "serverless"
+  ],
+  "author": "Your Name <youremail@example.com>",
+  "contributors": [],
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "files": [
+    "src",
+    "public",
+    "functions",
+    "netlify.toml"
+  ],
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-helmet": "^6.1.0",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "netlify-cli": "^10.0.0",
+    "react-scripts": "^5.0.1",
+    "eslint": "^8.17.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-import": "^2.26.0"
+  }
+}
