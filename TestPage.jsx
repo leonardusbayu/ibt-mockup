@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { Helmet } from 'react-helmet'
 import TimerComponent from './TimerComponent'
 import { useAuth } from '../authcontext'
@@ -14,7 +14,7 @@ export default function TestPage() {
   const [isError, setIsError] = useState(false)
   const [isTestComplete, setIsTestComplete] = useState(false)
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     document.dispatchEvent(new CustomEvent('questions:fetchRequest'))
     setIsLoading(true)
     setIsError(false)
@@ -32,14 +32,12 @@ export default function TestPage() {
       setIsLoading(false)
       document.dispatchEvent(new CustomEvent('questions:fetchFailure'))
     }
-  }
-
-  retryFetchQuestions = fetchData
+  }, [])
 
   useEffect(() => {
+    retryFetchQuestions = fetchData
     fetchData()
-    return () => { retryFetchQuestions = null }
-  }, [])
+  }, [fetchData])
 
   const handleNextQuestion = () => {
     const section = sections[currentSectionIndex]
@@ -91,7 +89,7 @@ export default function TestPage() {
           {isError && (
             <div id="error-message" role="alert" aria-live="assertive" className="error-state is-error">
               <p>Failed to load questions.</p>
-              <button id="retry-button" onClick={retryFetchQuestions}>Retry</button>
+              <button id="retry-button" onClick={fetchData}>Retry</button>
             </div>
           )}
           {!isLoading && !isError && isTestComplete && (
