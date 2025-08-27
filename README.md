@@ -1,2 +1,8 @@
-# ibt-mockup
-mockup ibt
+DATABASE_URL=postgres://USER:PASS@HOST:PORT/DB
+NETLIFY_ENV=development
+NODE_ENV=development
+JWT_SECRET=your_jwt_secret
+UPLOAD_SECRET=your_upload_secret
+DB_MAX_POOL_SIZE=10
+DB_IDLE_TIMEOUT_MS=30000
+DB_CONNECTION_TIMEOUT_MS=2000
