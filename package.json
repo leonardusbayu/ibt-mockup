@@ -47,7 +47,10 @@
     "react-router-dom": "^6.3.0",
     "react-helmet": "^6.1.0",
     "pg": "^8.7.3",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "bcrypt": "^5.1.0",
+    "jsonwebtoken": "^9.0.0",
+    "dotenv": "^16.0.0"
   },
   "devDependencies": {
     "netlify-cli": "^10.0.0",
