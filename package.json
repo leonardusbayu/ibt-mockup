@@ -42,18 +42,20 @@
     "netlify.toml"
   ],
   "dependencies": {
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "pg": "^8.7.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0",
     "react-helmet": "^6.1.0",
-    "pg": "^8.7.3"
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "netlify-cli": "^10.0.0",
-    "react-scripts": "^5.0.1",
     "eslint": "^8.17.0",
-    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-react": "^7.29.4",
+    "netlify-cli": "^10.0.0"
   }
 }

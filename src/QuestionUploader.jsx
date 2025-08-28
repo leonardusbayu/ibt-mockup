@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet'
-import { useAuth } from '../authcontext'
+import { useAuth } from './AuthContext.js'
 import '../styles/questionUploader.css'
 
 const QuestionUploader = () => {

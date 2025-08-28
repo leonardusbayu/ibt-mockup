@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuth } from './authcontext';
+import { useAuth } from './AuthContext.js';
 import { Helmet } from 'react-helmet';
 
 const Sidebar = () => {
