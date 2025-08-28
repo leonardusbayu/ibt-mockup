@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import TimerComponent from './TimerComponent'
-import { useAuth } from '../authcontext'
+import { useAuth } from './AuthContext'
 
 export let retryFetchQuestions
 

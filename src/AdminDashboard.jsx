@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useAuth } from '../authcontext'
+import { useAuth } from './AuthContext'
 import Sidebar from './Sidebar'
 import { Helmet } from 'react-helmet'
 

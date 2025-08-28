@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import { useAuth } from '../authcontext'
+import { useAuth } from './AuthContext'
 
 export default function LoginPage() {
   const navigate = useNavigate()
