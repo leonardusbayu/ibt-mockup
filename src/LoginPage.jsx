@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-// import { useAuth } from './AuthContext' // Temporarily disabled
+import { useAuth } from './AuthContext'
 
 export default function LoginPage() {
   const navigate = useNavigate()
-  // const { login } = useAuth() // Temporarily disabled
+  const { login } = useAuth()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -22,8 +22,7 @@ export default function LoginPage() {
     setError('')
 
     try {
-      // Temporary mock login
-      console.log('Login attempt:', { username: username.trim(), password })
+      await login({ username: username.trim(), password })
       navigate('/admin')
     } catch (err) {
       setError(err.message || 'Login failed. Please try again.')

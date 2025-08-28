@@ -9,16 +9,18 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/test" element={<TestPage />} />
-          <Route path="/results" element={<ResultsPage />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/test" element={<TestPage />} />
+            <Route path="/results" element={<ResultsPage />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
 }
 

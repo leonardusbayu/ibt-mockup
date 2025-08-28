@@ -113,13 +113,18 @@ function AuthProvider({ children }) {
     const storedUser = localStorage.getItem('user')
     const storedToken = localStorage.getItem('token')
     if (storedUser && storedToken) {
-      dispatch({
-        type: 'INIT_AUTH',
-        payload: { user: JSON.parse(storedUser), token: storedToken }
-      })
-      refreshToken()
+      try {
+        dispatch({
+          type: 'INIT_AUTH',
+          payload: { user: JSON.parse(storedUser), token: storedToken }
+        })
+      } catch (error) {
+        console.error('Error parsing stored user data:', error)
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
+      }
     }
-  }, [refreshToken])
+  }, [])
 
   useEffect(() => {
     const handleLoginRequest = e => login(e.detail)
