@@ -1,5 +1,4 @@
-const { connect, disconnect } = require('../../neonClient')
-const { query } = require('../../dbClient')
+const { query } = require('../dbClient')
 const jwt = require('jsonwebtoken')
 
 const MAX_RETRIES = 2
@@ -118,7 +117,6 @@ exports.handler = async (event, context) => {
   `
 
   let rows
-  await connect()
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
     try {
       const res = await query(sql, values)
@@ -130,7 +128,6 @@ exports.handler = async (event, context) => {
         await new Promise(r => setTimeout(r, RETRY_DELAY_MS * (attempt + 1)))
         continue
       } else {
-        await disconnect()
         return {
           statusCode: 500,
           headers: {
@@ -144,7 +141,6 @@ exports.handler = async (event, context) => {
       }
     }
   }
-  await disconnect()
 
   const sectionsMap = {}
   rows.forEach(row => {

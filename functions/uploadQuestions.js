@@ -1,5 +1,4 @@
 'use strict'
-const { connect, disconnect } = require('../neonClient')
 const { query } = require('../dbClient')
 
 const MAX_RETRIES = 3
@@ -151,8 +150,6 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    console.info('Connecting to database')
-    await connect()
     console.info('Beginning transaction')
     await retryQuery('BEGIN')
 
@@ -178,8 +175,6 @@ exports.handler = async (event, context) => {
 
     console.info('Committing transaction')
     await retryQuery('COMMIT')
-    console.info('Disconnecting database')
-    await disconnect()
 
     return {
       statusCode: 200,

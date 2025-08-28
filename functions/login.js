@@ -1,4 +1,4 @@
-const { query } = require('../../dbClient');
+const { query } = require('../dbClient');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
