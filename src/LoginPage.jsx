@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import { useAuth } from './AuthContext'
+// import { useAuth } from './AuthContext' // Temporarily disabled
 
 export default function LoginPage() {
   const navigate = useNavigate()
-  const { login } = useAuth()
+  // const { login } = useAuth() // Temporarily disabled
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -13,18 +13,22 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError('')
+    if (!username.trim() || !password.trim()) {
+      setError('Please enter both username and password')
+      return
+    }
+
     setLoading(true)
-    window.dispatchEvent(new CustomEvent('auth:loginRequest', { detail: { username } }))
+    setError('')
+
     try {
-      await login({ username, password })
-      window.dispatchEvent(new Event('auth:loginSuccess'))
-      navigate('/admindashboard')
+      // Temporary mock login
+      console.log('Login attempt:', { username: username.trim(), password })
+      navigate('/admin')
     } catch (err) {
-      setError('Invalid username or password')
+      setError(err.message || 'Login failed. Please try again.')
+    } finally {
       setLoading(false)
-      document.getElementById('username').setAttribute('aria-invalid', 'true')
-      document.getElementById('password').setAttribute('aria-invalid', 'true')
     }
   }
 
